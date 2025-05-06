@@ -1,3 +1,7 @@
-import { createWeatherDataObj } from "./data.js";
+import "./styles.css";
+import { activateForm, handleFormData } from "./form.js";
 
-createWeatherDataObj();
+const defaultLocation = "toronto";
+
+handleFormData(defaultLocation);
+activateForm();

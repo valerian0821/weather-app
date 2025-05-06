@@ -5,5 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div id="address-container">
+      <h1 id="address-header"></h1>
+    </div>
+    <div id="measurement">
+      <button class="measurement-btn">C°</button>
+      <button class="measurement-btn">F°</button>
+    </div>
+    <div id="current-conditions">
+      <div id="icon-container"></div>
+      <div id="icon-text">
+        <p id="temp-display"></p>
+        <p id="feelslike-display"></p>
+        <p id="conditions-display"></p>
+        <p id="precipprob-display"></p>
+      </div>
+    </div>
+    <form novalidate>
+      <div>
+        <label for="location">City:</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter a location"
+          minlength="2"
+          maxlength="30"
+          required
+        />
+        <button id="search-btn" type="submit">
+          <img id="search-icon" src="./imgs/search.svg" alt="Search Icon" />
+        </button>
+      </div>
+      <span class="error" aria-live="polite"></span>
+    </form>
+    <div id="description-container">
+      <p id="description-display"></p>
+    </div>
+    <div id="forecast-container"></div>
+  </body>
 </html>

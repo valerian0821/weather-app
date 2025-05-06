@@ -1,6 +1,30 @@
-import { fetchData } from "./fetch.js";
+import cloudyIcon from "./imgs/cloudy.png";
+import clearDayIcon from "./imgs/clear-day.png";
+import clearNightIcon from "./imgs/clear-night.png";
+import partlyCloudyDayIcon from "./imgs/partly-cloudy-day.png";
+import partlyCloudyNightIcon from "./imgs/partly-cloudy-night.png";
+import rainIcon from "./imgs/rain.png";
+import snowIcon from "./imgs/snow.png";
 
-let weatherDataObj = {};
+const weatherDataObj = {
+  value: {},
+};
+const daysinWeek = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
 
 class WeatherData {
   constructor(currentConditions, description, days, address) {
@@ -29,8 +53,7 @@ class DayData {
   }
 }
 
-const createWeatherDataObj = async () => {
-  const rawData = await fetchData();
+const createWeatherDataObj = (rawData) => {
   const currentConditions = getCurrentConditionsData(
     getCurrentConditionsObj(rawData),
   );
@@ -39,7 +62,7 @@ const createWeatherDataObj = async () => {
   const newDaysObj = createDaysArray(daysData, getDaysArray(rawData));
   const description = getDescription(rawData);
   const address = getAddress(rawData);
-  weatherDataObj = new WeatherData(
+  weatherDataObj.value = new WeatherData(
     newCurrentConditionsObj,
     description,
     newDaysObj,
@@ -131,11 +154,67 @@ const createDaysArray = (daysDataArray, rawDaysArray) => {
   const tempmins = daysDataArray[0];
   const tempmaxs = daysDataArray[1];
   const icons = daysDataArray[2];
+  const forecastDays = getForecastDays();
   for (let i = 0; i < rawDaysArray.length; i++) {
     const dayDataObj = new DayData(tempmins[i], tempmaxs[i], icons[i]);
-    daysArray.push(dayDataObj);
+    const dayObj = { [forecastDays[i]]: dayDataObj };
+    daysArray.push(dayObj);
   }
   return daysArray;
+};
+
+const getForecastDays = () => {
+  const forecastDays = [];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const today = new Date();
+  let dayName = days[today.getDay()];
+  dayName = convertShortForm(dayName);
+  for (let day in daysinWeek) {
+    if (forecastDays.length > 0) {
+      forecastDays.push(daysinWeek[day]);
+    }
+    if (forecastDays.length >= 8) {
+      break;
+    }
+    if (daysinWeek[day] === dayName) {
+      forecastDays.push("Today");
+    }
+  }
+  return forecastDays;
+};
+
+const convertShortForm = (day) => {
+  const shortForms = {
+    Sunday: "Sun",
+    Monday: "Mon",
+    Tuesday: "Tue",
+    Wednesday: "Wed",
+    Thursday: "Thu",
+    Friday: "Fri",
+    Saturday: "Sat",
+  };
+  return shortForms[day] || "";
+};
+
+const getWeatherIcon = (iconPhrase) => {
+  const legend = {
+    cloudy: cloudyIcon,
+    "clear-day": clearDayIcon,
+    "clear-night": clearNightIcon,
+    "partly-cloudy-day": partlyCloudyDayIcon,
+    "partly-cloudy-night": partlyCloudyNightIcon,
+    rain: rainIcon,
+    snow: snowIcon,
+  };
+  return legend[iconPhrase] || "";
 };
 
 const getDescription = (rawData) => {
@@ -160,4 +239,4 @@ const getAddress = (rawData) => {
   return address;
 };
 
-export { createWeatherDataObj };
+export { createWeatherDataObj, getWeatherIcon, weatherDataObj };

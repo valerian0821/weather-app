@@ -13,3 +13,10 @@ Required Data from Weather API:
 -icon
 -description
 -address
+
+cloudy
+partly-cloudy-day
+partly-cloudy-night
+clear-day
+rain
+snow
