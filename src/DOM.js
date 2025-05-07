@@ -125,12 +125,14 @@ const displayForecast = () => {
   for (let i = 0; i < 8; i++) {
     //Column 1: Day of Week
     const dayofWeekCell = document.createElement("div");
+    dayofWeekCell.classList.add("center");
     const dayName = getDayName(i);
     dayofWeekCell.textContent = dayName;
     forecast.appendChild(dayofWeekCell);
 
     //Column 2: Weather Icon
     const weatherIconCell = document.createElement("div");
+    weatherIconCell.classList.add("center");
     forecast.appendChild(weatherIconCell);
     const weatherIcon = document.createElement("img");
     weatherIcon.src = getDayIconSrc(i, dayName);
@@ -140,6 +142,7 @@ const displayForecast = () => {
 
     //Column 3: Temp High-Lows
     const highLowCell = document.createElement("div");
+    highLowCell.classList.add("center");
     forecast.appendChild(highLowCell);
     const rawTempLow = getTempMin(i, dayName);
     const cleanTempLow = convertToDisplay(rawTempLow);

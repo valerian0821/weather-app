@@ -15,16 +15,16 @@
     </div>
     <div id="current-conditions">
       <div id="icon-container"></div>
-      <div id="icon-text">
+      <div class="center" id="icon-text">
         <p id="temp-display"></p>
-        <p id="feelslike-display"></p>
-        <p id="conditions-display"></p>
-        <p id="precipprob-display"></p>
+        <p class="italicize" id="feelslike-display"></p>
+        <p class="italicize" id="conditions-display"></p>
+        <p class="italicize" id="precipprob-display"></p>
       </div>
     </div>
     <form novalidate>
       <div>
-        <label for="location">City:</label>
+        <label for="location">Location:</label>
         <input
           type="text"
           id="location"
@@ -38,11 +38,16 @@
           <img id="search-icon" src="./imgs/search.svg" alt="Search Icon" />
         </button>
       </div>
-      <span class="error" aria-live="polite"></span>
+      <span aria-live="polite"></span>
     </form>
-    <div id="description-container">
+    <div class="center" id="description-container">
       <p id="description-display"></p>
     </div>
-    <div id="forecast-container"></div>
+    <div>
+      <div class="center" id="forecast-header">
+        <h2>7-Day Forecast</h2>
+      </div>
+      <div id="forecast-container"></div>
+    </div>
   </body>
 </html>

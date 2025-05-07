@@ -10,11 +10,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  gap: 20px;
 }
 
 button {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  border-left: none;
 }
 
 h1 {
@@ -22,15 +25,39 @@ h1 {
   font-weight: bold;
 }
 
-input:user-invalid {
-  border-color: #900;
-  background-color: #fdd;
+input {
+  height: 30px;
+  border-right: none;
+  margin-left: 10px;
+}
+
+form {
+  padding: 10px;
+}
+
+span {
+  height: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .error {
   width: 100%;
   color: white;
   background-color: #900;
+}
+
+.italicize {
+  font-style: italic;
 }
 
 .measurement-btn {
@@ -49,13 +76,14 @@ input:user-invalid {
 }
 
 img {
-  width: 15px;
-  height: 15px;
+  width: 100%;
+  height: 100%;
 }
 
-#address-container {
-  margin-bottom: 20px;
-  border: 1px solid black;
+form > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #measurement-btns {
@@ -67,13 +95,11 @@ img {
   display: flex;
   justify-content: center;
   gap: 20px;
-  border: 1px solid black;
 }
 
 #icon-container {
   width: 250px;
   height: 250px;
-  border: 1px solid red;
 }
 
 #current-weather-icon {
@@ -85,24 +111,21 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid red;
   width: 250px;
   height: 250px;
 }
 
 #temp-display {
   font-size: 6rem;
-  border: 1px solid green;
-}
-
-#feelslike-display,
-#conditions-display {
-  border: 1px solid green;
 }
 
 #description-container {
   width: 500px;
   height: 60px;
+}
+
+#forecast-header {
+  height: 40px;
   border: 1px solid black;
 }
 
