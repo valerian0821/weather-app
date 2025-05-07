@@ -44,6 +44,10 @@ input:user-invalid {
   height: 40px;
 }
 
+.measurement-active {
+  font-weight: bold;
+}
+
 img {
   width: 15px;
   height: 15px;
@@ -54,7 +58,7 @@ img {
   border: 1px solid black;
 }
 
-#measurement {
+#measurement-btns {
   display: flex;
   border: 1px solid black;
 }

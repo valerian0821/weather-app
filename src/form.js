@@ -1,5 +1,5 @@
 import { createWeatherDataObj } from "./data.js";
-import { displayData } from "./DOM.js";
+import { displayData, clearDisplay } from "./DOM.js";
 
 const form = document.querySelector("form");
 const locationInput = document.getElementById("location");
@@ -70,6 +70,7 @@ const handleFormData = async (location) => {
     showError();
   } else {
     createWeatherDataObj(rawData);
+    clearDisplay();
     displayData();
   }
 };
